@@ -39,10 +39,6 @@ export interface StampSingleResult {
   warnings: string[];
 }
 
-const DUMMY_SUBJECT = "Dummy signature";
-const DUMMY_NOTICE =
-  "Dummy signature - not digitally signed. No certificate is associated with this mark.";
-
 /**
  * Append a visible-only `/Stamp` annotation for a dummy placement.
  *
@@ -103,9 +99,9 @@ export async function stampSingle(
     M: PDFString.fromDate(input.signingTime),
     CreationDate: PDFString.fromDate(input.signingTime),
     NM: PDFString.of(`dummy-${placement.id}`),
-    Subj: PDFString.of(DUMMY_SUBJECT),
+    Subj: PDFString.of(input.dummyName),
     T: PDFString.of(input.dummyName),
-    Contents: PDFString.of(DUMMY_NOTICE),
+    Contents: PDFString.of(""),
   });
   const annotationBytes = new Uint8Array(annotation.sizeInBytes());
   annotation.copyBytesInto(annotationBytes, 0);
