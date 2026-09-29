@@ -1,0 +1,17 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+.vite
+coverage
+.omo
+.codegraph
+
+# local test artifacts (may contain private keys / signed docs)
+/tmp-*
+/out
+*.tsbuildinfo
+*.pdf
+*.p12
+*.pfx
